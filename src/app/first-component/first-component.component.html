@@ -1,0 +1,11 @@
+
+<div class="cats">
+  <div *ngFor="let item of items; let i = index;">
+    <div class="blocks">
+    <div class="item" >{{i+1}}</div>
+      <button (click)="remove(i);">delete</button>
+    <div class="item" >{{item.title}}</div>
+    <img src="{{item.url}}" alt="">
+    </div>
+  </div>
+</div>
