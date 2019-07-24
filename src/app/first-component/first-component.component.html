@@ -1,11 +1,9 @@
-
-<div class="cats">
-  <div *ngFor="let item of items; let i = index;">
+<div>
     <div class="blocks">
-    <div class="item" >{{i+1}}</div>
-      <button (click)="remove(i);">delete</button>
-    <div class="item" >{{item.title}}</div>
-    <img src="{{item.url}}" alt="">
+        <div class="item">{{id + 1}}</div>
+        <button (click)="remove(id);">delete</button>
+        <div class="item">{{cat.title}}</div>
+        <img [src]="cat.url" alt="">
     </div>
-  </div>
+    <input type="number" [(ngModel)]="number" (ngModelChange)="setNumber()">
 </div>
