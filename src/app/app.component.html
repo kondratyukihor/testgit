@@ -1,3 +1,9 @@
+<div class="cats">
+    <app-first-component [cat]="cat" [id]="i" *ngFor="let cat of items;let i = index"
+                         (delId)="remove($event)"
+                         (upCat)="update($event)"></app-first-component>
+</div>
 
+<button (click)="write()">write</button>
+<button (click)="read()">read</button>
 
-<app-first-component></app-first-component>
