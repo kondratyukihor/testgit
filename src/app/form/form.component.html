@@ -1,0 +1,19 @@
+<form>
+  <label>
+    <input type="text" name="title" placeholder="Title" [(ngModel)]='cat.title' #first="ngModel" required>
+    <div *ngIf="first.errors?.required" style="color: red">
+      Обов'язкове поле!
+    </div>
+  </label>
+  <label>
+    <input type="text" name="url" placeholder="Url" pattern="https?://.+"  [(ngModel)]='cat.url' #second="ngModel" required>
+    <div *ngIf="second.errors?.required" style="color: red" >
+      Обов'язкове поле!
+    </div>
+    <div *ngIf="second.errors?.pattern" style="color: red" >
+      Неправильний запис!
+    </div>
+
+  </label>
+  <input type="submit" (click)="create()" [disabled]="first.errors?.required || second.errors?.required || second.errors?.pattern">
+</form>

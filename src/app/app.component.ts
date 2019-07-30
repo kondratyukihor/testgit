@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from './core/services/auth.service';
 
+
 export class Cat {
     id: number;
     title: string;
@@ -85,11 +86,10 @@ export class AppComponent implements OnInit {
         });
     }
 
-    create() {
-        this.cat.id = 56;
-        this.items.push(this.cat);
-        this.cat = new Cat();
+    crCat(cat: Cat) {
+      this.items.unshift(cat);
     }
+
 
     ngOnInit(): void {
         this.authService.getSubj().subscribe((data) => console.log(data));

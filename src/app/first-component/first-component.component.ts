@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Cat} from '../app.component';
-import {AuthService} from "../core/services/auth.service";
+import {AuthService} from '../core/services/auth.service';
 
 
 @Component({
