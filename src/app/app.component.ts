@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from './core/services/auth.service';
+import {FunctionalityService} from './core/services/functionality.service';
 
 
 export class Cat {
@@ -69,13 +69,12 @@ export class AppComponent implements OnInit {
 
     ];
 
-    constructor(private authService: AuthService) {
+    constructor(private functionalityService: FunctionalityService) {
 
     }
 
-
     remove(no: number): void {
-        this.items.splice(no, 1);
+        this.functionalityService.delete(no);
     }
 
     update(cat: Cat): void {
@@ -86,27 +85,15 @@ export class AppComponent implements OnInit {
         });
     }
 
-    crCat(cat: Cat) {
-      this.items.unshift(cat);
+    create(cat: Cat) {
+        this.functionalityService.create(1, this.items);
     }
-
 
     ngOnInit(): void {
-        this.authService.getSubj().subscribe((data) => console.log(data));
+        this.functionalityService.getSubj().subscribe((data) => console.log(data));
 
-        this.authService.writeInLocalStoraje(1, this.items);
-    }
-
-    read() {
-        this.authService.read();
-    }
-
-    write() {
-        const obj = {
-            name: 'dklgdfjkghdfjk',
-            age: 3234,
-            ttest: 'kljlkgd'
-        };
-        this.authService.writeInLocalStoraje(1, this.items);
+        this.functionalityService.writeInLocalStorage(1, this.items);
     }
 }
+
+

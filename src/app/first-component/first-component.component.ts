@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Cat} from '../app.component';
-import {AuthService} from '../core/services/auth.service';
+import {FunctionalityService} from '../core/services/functionality.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class FirstComponentComponent implements OnInit {
 
     number: number;
 
-    constructor(private test: AuthService) {
+    constructor(private test: FunctionalityService) {
     }
 
     ngOnInit() {
@@ -25,10 +25,6 @@ export class FirstComponentComponent implements OnInit {
 
     remove(id: number) {
         this.delId.emit(id);
-    }
-
-    setNumber() {
-        this.test.setSubj(this.number);
     }
 
     emitCat() {

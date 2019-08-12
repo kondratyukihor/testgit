@@ -1,4 +1,4 @@
-<app-form (crCat)="crCat($event)"></app-form>
+<app-form (crCat)="create($event)"></app-form>
 <div class="cats">
     <app-first-component [cat]="cat" [id]="i" *ngFor="let cat of items;let i = index"
                          (delId)="remove($event)"
@@ -6,7 +6,5 @@
     </app-first-component>
 </div>
 
-<button (click)="write()">write</button>
-<button (click)="read()">read</button>
 
 

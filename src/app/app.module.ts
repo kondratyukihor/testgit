@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {FirstComponentModule} from './first-component/first-component.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FormComponent } from './form/form.component';
+import {FunctionalityService} from './core/services/functionality.service';
 
 @NgModule({
     declarations: [
@@ -13,11 +14,11 @@ import { FormComponent } from './form/form.component';
     ],
     imports: [
         BrowserModule,
-        FirstComponentModule,
         FormsModule,
+        FirstComponentModule,
         ReactiveFormsModule,
     ],
-    providers: [],
+    providers: [FunctionalityService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FirstComponentComponent} from './first-component.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AuthService} from '../core/services/auth.service';
+import {FunctionalityService} from '../core/services/functionality.service';
 
 @NgModule({
     declarations: [FirstComponentComponent],
@@ -13,7 +13,7 @@ import {AuthService} from '../core/services/auth.service';
         ReactiveFormsModule
     ],
     exports: [FirstComponentComponent],
-    providers: [AuthService]
+    providers: [FunctionalityService]
 })
 export class FirstComponentModule {
 }
