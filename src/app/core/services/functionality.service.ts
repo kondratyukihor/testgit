@@ -22,12 +22,12 @@ export class FunctionalityService {
 
     create(id: number, arr: any[]) {
         this.items.unshift(Cat);
-        localStorage.setItem(id.toString(), JSON.stringify(arr));
+        localStorage.setItem(LOCAL_STORAGE, JSON.stringify(this.items));
     }
 
-    delete(no: number) {
-        this.items.splice(no, 1);
-        localStorage.removeItem('test');
+    delete(id) {
+        this.items.splice(id, 1);
+        localStorage.removeItem('catArray');
     }
 
     getAll() {
