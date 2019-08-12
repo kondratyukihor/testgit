@@ -7,36 +7,35 @@ const LOCAL_STORAGE = 'catArray';
 @Injectable()
 
 export class FunctionalityService {
-    private subj = new BehaviorSubject(0);
-    constructor() {
-    }
+    private subj = new BehaviorSubject<Cat[]>([]);
+
     cat: Cat = new Cat();
-    items = [];
+    private items = [];
+
+    constructor() {
+        const tempCats = localStorage.getItem(LOCAL_STORAGE);
+        if (tempCats) {
+            this.items = JSON.parse(tempCats);
+            this.subj.next(this.items);
+        }
+    }
 
     create(id: number, arr: any[]) {
         this.items.unshift(Cat);
         localStorage.setItem(id.toString(), JSON.stringify(arr));
     }
+
     delete(no: number) {
         this.items.splice(no, 1);
         localStorage.removeItem('test');
     }
 
     getAll() {
-        const cats = localStorage.getItem(LOCAL_STORAGE);
-        return JSON.parse(cats);
-    }
-
-    setSubj(numb: number) {
-        this.subj.next(numb);
-    }
-
-    getSubj(): any {
         return this.subj;
     }
 
-    writeInLocalStorage(id: number, arr: any[]) {
-        localStorage.setItem(id.toString(), JSON.stringify(arr));
+    private updateStorage() {
+        localStorage.setItem(LOCAL_STORAGE, JSON.stringify(this.items));
     }
 }
 

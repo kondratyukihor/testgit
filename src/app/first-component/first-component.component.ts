@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Cat} from '../app.component';
-import {FunctionalityService} from '../core/services/functionality.service';
 
 
 @Component({
@@ -17,7 +16,7 @@ export class FirstComponentComponent implements OnInit {
 
     number: number;
 
-    constructor(private test: FunctionalityService) {
+    constructor() {
     }
 
     ngOnInit() {
