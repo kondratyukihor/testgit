@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FunctionalityService} from './core/services/functionality.service';
 
-
 export class Cat {
-    id: number;
+    id: any;
     title: string;
     url: string;
 }
@@ -21,25 +20,23 @@ export class AppComponent implements OnInit {
 
     }
 
-    remove(no: number): void {
-        this.functionalityService.delete(no);
+    delete(id: any): void {
+        this.functionalityService.delete(id);
     }
+
+    create(cat: Cat)  {
+        this.functionalityService.create(cat);
+    }
+
 
     update(cat: Cat): void {
-        this.items.forEach(item => {
-            if (cat.id === item.id) {
-                item.title = cat.title;
-            }
-        });
-    }
-
-    create(cat: Cat) {
-        this.functionalityService.create(1, this.items);
+        this.functionalityService.update(cat);
     }
 
     ngOnInit(): void {
-        this.functionalityService.getAll().subscribe(value => console.log(value));
+       this.functionalityService.getAll().subscribe((cats: Cat[]) => this.items = cats);
     }
+
 }
 
 

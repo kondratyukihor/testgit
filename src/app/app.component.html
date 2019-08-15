@@ -1,7 +1,7 @@
 <app-form (crCat)="create($event)"></app-form>
 <div class="cats">
-    <app-first-component [cat]="cat" [id]="i" *ngFor="let cat of items;let i = index"
-                         (delId)="remove($event)"
+    <app-first-component [cat]="cat" *ngFor="let cat of items;"
+                         (delId)="delete($event)"
                          (upCat)="update($event)">
     </app-first-component>
 </div>

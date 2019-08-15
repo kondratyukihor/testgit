@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Cat} from '../app.component';
+import {FunctionalityService} from '../core/services/functionality.service';
 
 @Component({
   selector: 'app-form',
@@ -7,21 +8,24 @@ import {Cat} from '../app.component';
   styleUrls: ['./form.component.sass']
 })
 export class FormComponent implements OnInit {
-  @Input() kat: Cat;
-  @Output() crCat: EventEmitter<Cat> = new EventEmitter();
 
+  @Output() crCat: EventEmitter<Cat> = new EventEmitter();
   cat: Cat = new Cat();
 
+  constructor(private functionalityService: FunctionalityService) { }
 
-  constructor() { }
 
   ngOnInit() {
   }
 
-  create() {
-    this.cat.id = 11;
-    this.crCat.emit(this.cat);
+  create(cat: Cat)  {
+    cat.id = this.uniqueID();
+    this.crCat.emit(cat);
     this.cat = new Cat();
+  }
+
+  private uniqueID() {
+    return '_' + Math.random().toString(36).substr(2, 9);
   }
 
 }

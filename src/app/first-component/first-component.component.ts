@@ -9,7 +9,6 @@ import {Cat} from '../app.component';
 })
 export class FirstComponentComponent implements OnInit {
     @Input() cat: Cat;
-    @Input() id: number;
 
     @Output() delId: EventEmitter<number> = new EventEmitter();
     @Output() upCat: EventEmitter<Cat> = new EventEmitter();
@@ -22,7 +21,7 @@ export class FirstComponentComponent implements OnInit {
     ngOnInit() {
     }
 
-    remove(id: number) {
+    remove(id: any) {
         this.delId.emit(id);
     }
 
